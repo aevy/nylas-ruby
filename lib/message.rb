@@ -18,6 +18,7 @@ module Inbox
     parameter :starred
     parameter :folder
     parameter :labels
+    parameter :files
 
     def inflate(json)
       super
@@ -68,8 +69,8 @@ module Inbox
       hash
     end
 
-    def files
-      @files ||= RestfulModelCollection.new(File, @_api, @namespace_id, {:message_id=>@id})
+    def files_meta
+      @files_meta ||= RestfulModelCollection.new(File, @_api, @namespace_id, {:message_id=>@id})
     end
 
     def raw
